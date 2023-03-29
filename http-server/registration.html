@@ -1,166 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Registration Form</title>
-    <link rel="stylesheet" href="registration.css" />
-    <script src="script1.js" defer></script>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      }
-      body {
-        background-color:aqua;
-      }
-      .head {
-        margin-top: 1rem;
-        /* color: white; */
-      }
-      .box {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: 3rem;
-      }
-      .form {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        background-color: white;
-        width: 600px;
-        height: 500px;
-        box-shadow: 2px 4px 10px gray;
-        border: 1px solid black;
-        border-radius: 20px;
-        padding: 20px;
-      }
-      .input {
-        padding: 10px 15px;
-        border: 2px solid rgba(0, 0, 0, 0.4);
-        font-size: 18px;
-        outline: none;
-        border-radius: 10px;
-        background-color: rgba(0, 0, 0, 0.02);
-      }
-      label {
-        font-size: 18px;
-        letter-spacing: 1.4px;
-      }
-      .tableForm {
-        margin-top: 10px;
-      }
-      .btn {
-        background-color: rgb(66, 55, 231);
-        color: white;
-        padding: 10px 20px;
-        font-size: large;
-        font-weight: 600;
-        border-radius: 10px;
-      }
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body class="bg-gray-900">
+    <div class="h-full max-h-full flex flex-col 
+    items-center justify-center content-center p-20 ">
+        <div class="text-white px-6 py-9 bg-gray-800 rounded-md border-4  border-white shadow-2xl" >
+            <div class="mb-11 text-2xl font-bold flex justify-center">
+                <h2>
+                    Registration Form
+                </h2>
+            </div>
+            <form class="font-semibold text-lg" id="userform" onsubmit="form_validate()">
+                <div class="mb-5 flex flex-row space-x-28 items-center">
+                    <label for="name">Name</label>
+                    <input class="w-56 rounded-md bg-gray-500 bg-opacity-40 rounded border border-gray-500 focus:border-green-500 focus:bg-gray-900 focus:ring-2 focus:ring-green-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" placeholder="Enter the Name" type="text" id="name" name="name" required>
+                </div>
+        
+                <div class="mb-5 flex flex-row space-x-28  items-center">
+                    <label for="email">Email</label>
+                    <input class="w-56 rounded-md bg-gray-500 bg-opacity-40 rounded border border-gray-500 focus:border-green-500 focus:bg-gray-900 focus:ring-2 focus:ring-green-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" placeholder="Ex: abc123@gmail.com" type="email" id="email" name="email" required>
+                </div>
+        
+                <div class="mb-5 flex flex-row space-x-20 items-center">
+                    <label for="password">Password</label>
+                    <input class="w-56 rounded-md bg-gray-500 bg-opacity-40 rounded border border-gray-500 focus:border-green-500 focus:bg-gray-900 focus:ring-2 focus:ring-green-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" type="password" id="password" name="password" required>
+                </div>
 
-      input:invalid:focus {
-        border: 2px solid red;
-      }
+                <div class="mb-5 flex flex-row space-x-14 items-center">
+                    <label for="dob">Date of Birth</label>
+                    <input class="w-56 rounded-md bg-gray-500 bg-opacity-40 rounded border border-gray-500 focus:border-green-500 focus:bg-gray-900 focus:ring-2 focus:ring-green-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" min="1968-02-12" max="2005-02-12"  type="date" id="dob" name="dob" required>
+                </div>
+        
+                <div class="mb-6 text-sm items-center">
+                    <input class="mr-2" type="checkbox" id="acceptterm" name="acceptterm" required>
+                    <label for="acceptterm">Accept Terms & Conditions</label>
+                </div>
+        
+                <div>
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
 
-      .table {
-        border: 2px solid black;
-        margin: 40px auto;
-      }
+        <div class="mt-10 px-20 ">
+            <div class="text-white py-2 px-2 bg-gray-800 rounded-md border-4 border-white shadow-2xl" >
+                <div class="mb-8 text-2xl font-bold flex justify-center">
+                    <h2>
+                        Entries
+                    </h2>
+                </div>
+                <table class="border-collapse border-2 border-indigo-400 w-full" id="regTable">
+                <thead>
+                
+                <tr>
+                <th class="border p-2 bg-gray-900">Name</th>
+                <th  class="border p-2 bg-gray-900">Email</th>
+                <th  class="border p-2 bg-gray-900">Password</th>
+                <th  class="border p-2 bg-gray-900">DOB</th>
+                <th  class="border p-2 bg-gray-900">Accepted terms?</th>
+                </tr>
+                
+                </thead>
+                <tbody></tbody>
+                </table>
+                </div>
+        </div>
 
-      .td,
-      .th {
-        padding: 10px;
-        text-align: center;
-      }
-
-      .subHead {
-        text-align: center;
-        margin-top: 2rem;
-      }
-    </style>
-  </head>
-  <body>
-    <h1 align="center" class="head">WD101 - Level 8</h1>
-    <div class="box">
-      <form class="form" id="form">
-        <h2 align="center">Registration Form</h2>
-
-        <table class="tableForm" cellspacing="25px">
-          <tr>
-            <td><label for="name">Name :</label></td>
-            <td>
-              <input
-                class="input"
-                type="text"
-                name="name"
-                id="name"
-                placeholder="Full Name"
-                required
-              />
-            </td>
-          </tr>
-          <tr>
-            <td><label for="email">E-mail :</label></td>
-            <td>
-              <input
-                class="input"
-                type="email"
-                name="email"
-                id="email"
-                placeholder="Email"
-                required
-              />
-            </td>
-          </tr>
-          <tr>
-            <td><label for="name">Password :</label></td>
-            <td>
-              <input
-                class="input"
-                type="password"
-                name="password"
-                id="password"
-                placeholder="Password"
-                required
-              />
-            </td>
-          </tr>
-          <tr>
-            <td><label for="dob">Date Of Birth :</label></td>
-            <td>
-              <input
-                style="width: 220px"
-                class="input"
-                type="date"
-                name="dob"
-                id="dob"
-                required
-              />
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <input type="checkbox" name="agree" id="agree" />
-              <label for="checkbox">Accespt Terms & Conditions</label>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button class="btn" type="submit">Submit</button>
-            </td>
-          </tr>
-        </table>
-      </form>
     </div>
 
-    <div class="entry">
-      <h2 class="subHead">Entries</h2>
-      <div id="tableDiv"></div>
-    </div>
-  </body>
+    
+        
+    <script src="index.js"></script>
+    
+</body>
 </html>
