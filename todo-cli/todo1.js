@@ -7,30 +7,43 @@ const todoList = () => {
       all[index].completed = true
     }
   
-    const overdue = (items) => {
-        const today = new Date();
-        return items.filter((item) => new Date(item.dueDate) < today);
+    const overdue = () => {
+        return all.filter(
+            (item) => item.dueDate < new Date().toISOString().slice(0, 10)
+        );
         // Write the date check condition here and return the array
         // of overdue items accordingly.
     };
   
     const dueToday = (items) => {
-        const today = new Date().toISOString().slice(0, 10);
-        return items.filter((item) => item.dueDate === today);
+        return all.filter(
+            (item) => item.dueDate === new Date().toISOString().slice(0, 10)
+        );
+        
       // Write the date check condition here and return the array
       // of todo items that are due today accordingly.
     };
   
-    const dueLater = (items) => {
-        const today = new Date().toISOString().slice(0, 10);
-        return items.filter((item) => item.dueDate > today);
+    const dueLater = () => {
+        return all.filter(
+            (item) => item.dueDate > new Date().toISOString().slice(0, 10) 
+        );
+        
       // Write the date check condition here and return the array
       // of todo items that are due later accordingly.
     };
   
     const toDisplayableList = (list) => {
-        const formattedList = list.map((item, index) => `${index + 1}. [${item.done ? 'x' : ' '}] ${item.name} - ${item.dueDate}`).join('\n');
-        return formattedList;
+         return list
+      .map((item) => {
+        const isCompleted = item.completed ? "[x]" : "[ ]";
+        const displayableDate =
+          item.dueDate === new Date().toISOString().slice(0, 10)
+            ? ""
+            : item.dueDate;
+        return `${isCompleted} ${item.title.trim()} ${displayableDate.trim()}`;
+      })
+      .join("\n");
       // Format the To-Do list here, and return the output string
       // as per the format given above.
     };
