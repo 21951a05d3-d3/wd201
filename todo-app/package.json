@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon -e js,ejs",
-    "start:prod": "node index.js",
+    "start:prod": "node index.js && npx sequelize-cli db:migrate",
     "pretest": "NODE_ENV=test npx sequelize-cli db:drop && NODE_ENV=test npx sequelize-cli db:create",
     "test": "NODE_ENV=test jest --detectOpenHandles",
     "prepare": "cd .. && husky install todo-app/.husky"
@@ -16,7 +16,7 @@
       "prettier --write ."
     ]
   },
-  "author": "Mahendar <mahendarchikkolla@gmail.com>",
+  "author": "L.Poojitha <21951a05d3@iare.ac.in>",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
