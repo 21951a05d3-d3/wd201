@@ -239,7 +239,23 @@ app.get("/homepage", (request, response, next) => {
   });
 });
 
+// app.get("/Login", (request, response, next) => {
+//   request.logout((err) => {
+//     if (err) {
+//       return next(err);
+//     }
+//     response.redirect("/login");
+//   });
+// });
 
+// app.get("/Signup", (request, response, next) => {
+//   request.logout((err) => {
+//     if (err) {
+//       return next(err);
+//     }
+//     response.redirect("/signup");
+//   });
+// });
 
 app.get("/todos", async function (_request, response) {
   console.log("Processing list of all Todos");
